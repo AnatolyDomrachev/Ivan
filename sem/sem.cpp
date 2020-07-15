@@ -6,21 +6,24 @@
 sem_t sem;
 
 void* print_1(void* vptr_args) {
+	sem_wait(&sem);
 	for(int i = 0; i<10; i++){
-		sem_wait(&sem);
 		printf("1\n");
-		sem_post(&sem);
-		usleep(10);
+	//	usleep(10);
 	}
+
+	sem_post(&sem);
 }
 
 void* print_2(void* vptr_args) {
+	sem_wait(&sem);
+
 	for(int i = 0; i<10; i++){
-		sem_wait(&sem);
 		printf("2\n");
-		sem_post(&sem);
-		usleep(10);
+	//	usleep(10);
 	}
+
+	sem_post(&sem);
 }
 
 main()
